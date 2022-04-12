@@ -5,9 +5,10 @@ table 50102 NutritionLine
     
     fields
     {   
-        field(1; NutritionalNumber; Code[10])
+        field(1; NutritionalNumber; Code[20])
         {
             Caption = 'Táplálkozási kód';
+            TableRelation = NutritionHeader.NutritionalNumber;
             DataClassification = CustomerContent;
         }
         field(2; SerialNumber; Code[20])
@@ -15,7 +16,7 @@ table 50102 NutritionLine
             Caption = 'Sorszám';
             DataClassification = CustomerContent;
         }
-        field(3; NutritionCode; Code[10])
+        field(3; NutritionCode; Code[20])
         {
             Caption = 'Tápanyag kód';
             DataClassification = CustomerContent;
@@ -26,7 +27,7 @@ table 50102 NutritionLine
                 Nutrient: Record Macronutrients;
             begin
                 if Nutrient.Get(NutritionCode) then
-                    Rec."Description" := Nutrient.Description
+                    Rec.Description := Nutrient.Description
                 else
                     Rec."Description" := '';
             end;
@@ -35,6 +36,7 @@ table 50102 NutritionLine
         {
             Caption = 'Megnevezés';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(5; Quantity; Integer)
         {

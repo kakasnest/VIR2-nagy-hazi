@@ -5,7 +5,7 @@ table 50100 Macronutrients
     
     fields
     {
-        field(1; "Code"; Code[10])
+        field(1; "Code"; Code[20])
         {
             Caption = 'Kód';
             DataClassification = CustomerContent;
@@ -30,11 +30,11 @@ table 50100 Macronutrients
             Caption = 'Szénhidrát';
             DataClassification = CustomerContent;
         }
-        field(7; UnitOfMeasurement; Text[50])
+        field(7; UnitOfMeasure; Text[50])
         {
             Caption = 'Mértékegység';
-            TableRelation = "Unit of Measure".Description;
             DataClassification = CustomerContent;
+            TableRelation = "Unit of Measure".Description where("Code"= field("Code"));
         }
         field(8; KJ; Decimal)
         {

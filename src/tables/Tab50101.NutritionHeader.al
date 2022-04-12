@@ -21,15 +21,16 @@ table 50101 NutritionHeader
                 Customer: Record Customer;
             begin
                 if Customer.Get(CustomerNumber) then
-                    Rec."CustomerName" := Customer.Name
+                    Rec.CustomerName := Customer.Name
                 else
-                    Rec."CustomerName" := '';
+                    Rec.CustomerName := '';
             end;
         }
         field(3; CustomerName; Text[100])
         {
             Caption = 'Vevő neve';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(4; "Date"; Date)
         {
