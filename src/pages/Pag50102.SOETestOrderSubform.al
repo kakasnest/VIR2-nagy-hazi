@@ -1,6 +1,6 @@
-page 50102 "SOE Test Order Subpage"
+page 50102 "SOE Test Order Subform"
 {
-    Caption = 'SOE Test Order Subpage';
+    Caption = 'SOE Test Order Subform';
     PageType = ListPart;
     SourceTable = "SOE Test Line";
     AutoSplitKey = true;

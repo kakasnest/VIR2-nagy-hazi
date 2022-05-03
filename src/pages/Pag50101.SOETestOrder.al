@@ -1,6 +1,6 @@
-page 50101 "SOE Test Order Card"
+page 50101 "SOE Test Order"
 {
-    Caption = 'SOE Test Order Card';
+    Caption = 'SOE Test Order';
     PageType = Document;
     SourceTable = "SOE Test Header";
     
@@ -35,7 +35,7 @@ page 50101 "SOE Test Order Card"
                     Editable = false;
                 }
             }
-            part(Lines; "SOE Test Order Subpage"){
+            part(Lines; "SOE Test Order Subform"){
                 SubPageLink = "Document No." = field("Document No.");
                 ApplicationArea = All;
             }

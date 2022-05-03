@@ -30,21 +30,36 @@ table 50100 Macronutrients
             Caption = 'Szénhidrát';
             DataClassification = CustomerContent;
         }
-        field(7; UnitOfMeasure; Text[50])
-        {
+        field(6; "Unit of Measure"; Text[50]){
             Caption = 'Mértékegység';
             DataClassification = CustomerContent;
-            TableRelation = "Unit of Measure".Description where("Code"= field("Code"));
+            Editable = false;
         }
-        field(8; KJ; Decimal)
+        field(7; KJ; Decimal)
         {
             Caption = 'KJ';
             DataClassification = CustomerContent;
         }
-        field(9; Kcal; Decimal)
+        field(8; Kcal; Decimal)
         {
             Caption = 'Kcal';
             DataClassification = CustomerContent;
+        }
+        field(9; "Unit of Measure Code"; Code[10])
+        {
+            Caption = 'Mértékegység kódja';
+            DataClassification = CustomerContent;
+            TableRelation = "Unit of Measure";
+
+            trigger OnValidate()
+            var
+                Measure: Record "Unit of Measure";
+            begin
+                if Measure.Get("Unit Of Measure Code") then
+                    Rec."Unit of Measure" := Measure.Description
+                else
+                    Rec."Unit of Measure" := '';
+            end;
         }
     }
     keys
@@ -54,4 +69,15 @@ table 50100 Macronutrients
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    var
+        Setup: Record "Macronutrients Setup";
+        NoMgmt: Codeunit NoSeriesManagement;
+    begin
+        if Rec.Code = '' then
+        begin
+            Setup.Get();
+            Rec.Code := NoMgmt.GetNextNo(Setup."No. Series for Macronutrient", WorkDate(), true);
+        end;
+    end;
 }

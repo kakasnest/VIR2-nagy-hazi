@@ -1,12 +1,12 @@
-page 50100 "SOE Test Order List"
+page 50100 "SOE Test Orders"
 {
     ApplicationArea = All;
-    Caption = 'SOE Test Order List';
+    Caption = 'SOE Test Orders';
     PageType = List;
     SourceTable = "SOE Test Header";
     UsageCategory = Lists;
     Editable = false;
-    CardPageId = "SOE Test Order Card";
+    CardPageId = "SOE Test Order";
     
     layout
     {
