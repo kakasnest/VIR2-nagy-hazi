@@ -1,22 +1,22 @@
-table 50102 NutritionLine
+table 50102 "Nutrition Line"
 {
-    Caption = 'NutritionLine';
+    Caption = 'Nutrition Line';
     DataClassification = CustomerContent;
     
     fields
     {   
-        field(1; NutritionalNumber; Code[20])
+        field(1; "Nutritional No."; Code[20])
         {
             Caption = 'Táplálkozási kód';
-            TableRelation = NutritionHeader.NutritionalNumber;
+            TableRelation = "Nutrition Header"."Nutritional No.";
             DataClassification = CustomerContent;
         }
-        field(2; SerialNumber; Code[20])
+        field(2; "Serial No."; Integer)
         {
             Caption = 'Sorszám';
             DataClassification = CustomerContent;
         }
-        field(3; NutritionCode; Code[20])
+        field(3; "Nutrition Code"; Code[20])
         {
             Caption = 'Tápanyag kód';
             DataClassification = CustomerContent;
@@ -26,7 +26,7 @@ table 50102 NutritionLine
             var
                 Nutrient: Record Macronutrients;
             begin
-                if Nutrient.Get(NutritionCode) then
+                if Nutrient.Get(Rec."Nutrition Code") then
                     Rec.Description := Nutrient.Description
                 else
                     Rec."Description" := '';
@@ -47,7 +47,7 @@ table 50102 NutritionLine
             var
                 Nutrient: Record Macronutrients;
             begin
-                if Nutrient.Get(NutritionCode) then
+                if Nutrient.Get(Rec."Nutrition Code") then
                     begin
                     Rec.Protein := Nutrient.Protein * Quantity;
                     Rec.Fat := Nutrient.Fat * Quantity;
@@ -98,7 +98,7 @@ table 50102 NutritionLine
     }
     keys
     {
-        key(PK; SerialNumber)
+        key(PK; "Serial No.")
         {
             Clustered = true;
         }

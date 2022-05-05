@@ -30,36 +30,21 @@ table 50100 Macronutrients
             Caption = 'Szénhidrát';
             DataClassification = CustomerContent;
         }
-        field(6; "Unit of Measure"; Text[50]){
-            Caption = 'Mértékegység';
-            DataClassification = CustomerContent;
-            Editable = false;
-        }
-        field(7; KJ; Decimal)
+        field(6; KJ; Decimal)
         {
             Caption = 'KJ';
             DataClassification = CustomerContent;
         }
-        field(8; Kcal; Decimal)
+        field(7; Kcal; Decimal)
         {
             Caption = 'Kcal';
             DataClassification = CustomerContent;
         }
-        field(9; "Unit of Measure Code"; Code[10])
+        field(8; "Unit of Measure Code"; Code[10])
         {
-            Caption = 'Mértékegység kódja';
+            Caption = 'Mértékegység';
             DataClassification = CustomerContent;
             TableRelation = "Unit of Measure";
-
-            trigger OnValidate()
-            var
-                Measure: Record "Unit of Measure";
-            begin
-                if Measure.Get("Unit Of Measure Code") then
-                    Rec."Unit of Measure" := Measure.Description
-                else
-                    Rec."Unit of Measure" := '';
-            end;
         }
     }
     keys

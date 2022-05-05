@@ -1,7 +1,7 @@
 table 50105 "Macronutrients Setup"
 {
-    Caption = 'No. Series Macronutrients';
-    DataClassification = ToBeClassified;
+    Caption = 'Macronutrients Setup';
+    DataClassification = CustomerContent;
     
     fields
     {

@@ -1,10 +1,12 @@
-page 50103 "Macronutrients List"
+page 50103 "Macronutrients"
 {
     ApplicationArea = All;
-    Caption = 'Macronutrients List';
+    Caption = 'Macronutrients';
     PageType = List;
     SourceTable = Macronutrients;
     UsageCategory = Lists;
+    Editable = false;
+    CardPageId = "Macronutrient Entry";
     
     layout
     {
@@ -40,11 +42,6 @@ page 50103 "Macronutrients List"
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ToolTip = 'Specifies the value of the Mértékegység kódja field.';
-                    ApplicationArea = All;
-                }
-                field(UnitOfMeasure; Rec."Unit of Measure")
-                {
-                    ToolTip = 'Specifies the value of the Mértékegység field.';
                     ApplicationArea = All;
                 }
                 field(KJ; Rec.KJ)

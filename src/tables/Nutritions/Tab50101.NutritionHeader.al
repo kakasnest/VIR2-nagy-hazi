@@ -1,16 +1,16 @@
-table 50101 NutritionHeader
+table 50101 "Nutrition Header"
 {
-    Caption = 'NutritionHeader';
+    Caption = 'Nutrition Header';
     DataClassification = CustomerContent;
     
     fields
     {
-        field(1; NutritionalNumber; Code[20])
+        field(1; "Nutritional No."; Code[20])
         {
             Caption = 'Táplálkozási kód';
             DataClassification = CustomerContent;
         }
-        field(2; CustomerNumber; Code[20])
+        field(2; "Customer No."; Code[20])
         {
             Caption = 'Vevőkód';
             DataClassification = CustomerContent;
@@ -20,13 +20,13 @@ table 50101 NutritionHeader
             var
                 Customer: Record Customer;
             begin
-                if Customer.Get(CustomerNumber) then
-                    Rec.CustomerName := Customer.Name
+                if Customer.Get("Customer No.") then
+                    Rec."Customer Name" := Customer.Name
                 else
-                    Rec.CustomerName := '';
+                    Rec."Customer Name" := '';
             end;
         }
-        field(3; CustomerName; Text[100])
+        field(3; "Customer Name"; Text[100])
         {
             Caption = 'Vevő neve';
             DataClassification = CustomerContent;
@@ -46,9 +46,20 @@ table 50101 NutritionHeader
     }
     keys
     {
-        key(PK; NutritionalNumber)
+        key(PK; "Nutritional No.")
         {
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    var
+        Setup: Record "Nutrition Setup";
+        NoMgmt: Codeunit NoSeriesManagement;
+    begin
+        if Rec."Nutritional No." = '' then
+        begin
+            Setup.Get();
+            Rec."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutrient", WorkDate(), true);
+        end;
+    end;
 }

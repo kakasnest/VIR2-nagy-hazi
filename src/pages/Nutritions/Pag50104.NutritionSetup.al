@@ -1,8 +1,8 @@
-page 50105 "Macronutrients Setup Page"
+page 50104 "Nutrition Setup"
 {
-    Caption = 'Macronutrients Setup Page';
+    Caption = 'Nutrition Setup';
     PageType = Card;
-    SourceTable = "Macronutrients Setup";
+    SourceTable = "Nutrition Setup";
     UsageCategory = Administration;
     ApplicationArea = All;
     
@@ -12,9 +12,9 @@ page 50105 "Macronutrients Setup Page"
         {
             group(General)
             {
-                field("No. Series for Macronutrient"; Rec."No. Series for Macronutrient")
+                field("No. Series for Nutrient"; Rec."No. Series for Nutrient")
                 {
-                    ToolTip = 'Specifies the value of the No. Series for Macronutrient field.';
+                    ToolTip = 'Specifies the value of the No. Series for Nutrient field.';
                     ApplicationArea = All;
                 }
             }
