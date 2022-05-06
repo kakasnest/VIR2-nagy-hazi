@@ -1,9 +1,9 @@
-page 50109 "Nutrition Order Subform"
+page 50110 "Nutrition Order Lines"
 {
-    Caption = 'Nutrition Order Subform';
-    PageType = ListPart;
+    Caption = 'Nutrition Order Lines';
+    PageType = List;
     SourceTable = "Nutrition Line";
-    AutoSplitKey = true;
+    UsageCategory = Lists;
     
     layout
     {
@@ -14,20 +14,14 @@ page 50109 "Nutrition Order Subform"
                 field("Nutritional No."; Rec."Nutritional No.")
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
-                    
                 }
                 field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
-                    Editable = false;
-                    
                 }
                 field("Nutrition Code"; Rec."Nutrition Code")
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
                 }
                 field(Description; Rec.Description)
                 {
@@ -36,7 +30,6 @@ page 50109 "Nutrition Order Subform"
                 field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
                 }
                 field(Protein; Rec.Protein)
                 {

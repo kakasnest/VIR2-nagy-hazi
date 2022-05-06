@@ -14,7 +14,6 @@ page 50104 "Nutrition Setup"
             {
                 field("No. Series for Nutrient"; Rec."No. Series for Nutrient")
                 {
-                    ToolTip = 'Specifies the value of the No. Series for Nutrient field.';
                     ApplicationArea = All;
                 }
             }

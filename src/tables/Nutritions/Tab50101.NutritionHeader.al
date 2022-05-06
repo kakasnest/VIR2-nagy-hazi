@@ -15,6 +15,7 @@ table 50101 "Nutrition Header"
             Caption = 'Vevőkód';
             DataClassification = CustomerContent;
             TableRelation = Customer."No.";
+            ValidateTableRelation = true;
 
             trigger OnValidate()
             var
@@ -42,6 +43,31 @@ table 50101 "Nutrition Header"
             Caption = 'Státusz';
             ValuesAllowed = 0, 1;
             DataClassification = CustomerContent;
+        }
+        field(6; "Total Protein"; Decimal){
+            Caption= 'Összesített protein';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Nutrition Line".Protein Where("Nutritional No." = field("Nutritional No.")));
+        }
+        field(7; "Total Fat"; Decimal){
+            Caption= 'Összesített zsír';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Nutrition Line".Fat Where("Nutritional No." = field("Nutritional No.")));
+        }
+        field(8; "Total Carbohydrate"; Decimal){
+            Caption= 'Összesített szénhidrát';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Nutrition Line".Carbohydrate Where("Nutritional No." = field("Nutritional No.")));
+        }
+        field(9; "Total KJ"; Decimal){
+            Caption= 'Összesített KJ';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Nutrition Line".KJ Where("Nutritional No." = field("Nutritional No.")));
+        }
+        field(10; "Total Kcal"; Decimal){
+            Caption= 'Összesített kalória';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Nutrition Line".Kcal Where("Nutritional No." = field("Nutritional No.")));
         }
     }
     keys

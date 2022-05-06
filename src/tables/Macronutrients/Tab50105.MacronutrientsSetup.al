@@ -15,6 +15,7 @@ table 50105 "Macronutrients Setup"
             Caption = 'No. Series for Macronutrient';
             DataClassification = CustomerContent;
             TableRelation = "No. Series".Code;
+            ValidateTableRelation = true;
         }
     }
     keys

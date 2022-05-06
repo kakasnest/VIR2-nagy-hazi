@@ -15,6 +15,7 @@ table 50106 "Nutrition Setup"
             Caption = 'No. Series for Nutrient';
             DataClassification = CustomerContent;
             TableRelation = "No. Series".Code;
+            ValidateTableRelation = true;
         }
     }
     keys

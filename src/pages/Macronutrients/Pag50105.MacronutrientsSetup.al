@@ -14,7 +14,6 @@ page 50105 "Macronutrients Setup"
             {
                 field("No. Series for Macronutrient"; Rec."No. Series for Macronutrient")
                 {
-                    ToolTip = 'Specifies the value of the No. Series for Macronutrient field.';
                     ApplicationArea = All;
                 }
             }

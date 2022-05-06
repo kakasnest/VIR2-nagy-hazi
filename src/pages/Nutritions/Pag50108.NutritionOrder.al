@@ -12,29 +12,105 @@ page 50108 "Nutrition Order"
             {
                 field("Nutritional No."; Rec."Nutritional No.")
                 {
-                    ToolTip = 'Specifies the value of the Táplálkozási kód field.';
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
                 field("Customer No."; Rec."Customer No.")
                 {
-                    ToolTip = 'Specifies the value of the Vevőkód field.';
                     ApplicationArea = All;
                 }
                 field("Customer Name"; Rec."Customer Name")
                 {
-                    ToolTip = 'Specifies the value of the Vevő neve field.';
                     ApplicationArea = All;
                 }
                 field("Date"; Rec."Date")
                 {
-                    ToolTip = 'Specifies the value of the Dátum field.';
                     ApplicationArea = All;
                 }
-                field(Status; Rec.Status)
+                field("Total Protein"; Rec."Total Protein")
                 {
-                    ToolTip = 'Specifies the value of the Státusz field.';
                     ApplicationArea = All;
+                    DrillDown = true;
+                    Editable = false;
+
+                    trigger OnDrillDown()
+                    var
+                        LinesR: Record "Nutrition Line";
+                        LinesP: Page "Nutrition Order Lines";
+
+                    begin
+                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
+                        LinesP.SetRecord(LinesR);
+                        LinesP.Run()
+                    end;
+                }
+                field("Total Fat"; Rec."Total Fat")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    var
+                        LinesR: Record "Nutrition Line";
+                        LinesP: Page "Nutrition Order Lines";
+
+                    begin
+                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
+                        LinesP.SetRecord(LinesR);
+                        LinesP.Run()
+                    end;
+                }
+                field("Total Carbohydrate"; Rec."Total Carbohydrate")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    var
+                        LinesR: Record "Nutrition Line";
+                        LinesP: Page "Nutrition Order Lines";
+
+                    begin
+                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
+                        LinesP.SetRecord(LinesR);
+                        LinesP.Run()
+                    end;
+                }
+                field("Total KJ"; Rec."Total KJ")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    var
+                        LinesR: Record "Nutrition Line";
+                        LinesP: Page "Nutrition Order Lines";
+
+                    begin
+                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
+                        LinesP.SetRecord(LinesR);
+                        LinesP.Run()
+                    end;
+                }
+                field("Total Kcal"; Rec."Total Kcal")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    var
+                        LinesR: Record "Nutrition Line";
+                        LinesP: Page "Nutrition Order Lines";
+
+                    begin
+                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
+                        LinesP.SetRecord(LinesR);
+                        LinesP.Run()
+                    end;
                 }
             }
             part(Lines; "Nutrition Order Subform"){

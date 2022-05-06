@@ -21,6 +21,7 @@ table 50102 "Nutrition Line"
             Caption = 'Tápanyag kód';
             DataClassification = CustomerContent;
             TableRelation = Macronutrients."Code";
+            ValidateTableRelation = true;
 
             trigger OnValidate()
             var
