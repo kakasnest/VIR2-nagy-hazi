@@ -46,15 +46,15 @@ table 50102 "Nutrition Line"
 
             trigger OnValidate()
             var
-                Nutrient: Record Macronutrients;
+                MNutrient: Record Macronutrients;
             begin
-                if Nutrient.Get(Rec."Nutrition Code") then
+                if MNutrient.Get(Rec."Nutrition Code") then
                     begin
-                    Rec.Protein := Nutrient.Protein * Quantity;
-                    Rec.Fat := Nutrient.Fat * Quantity;
-                    Rec.Carbohydrate := Nutrient.Carbohydrate * Quantity;
-                    Rec.KJ := Nutrient.KJ * Quantity;
-                    Rec.Kcal := Nutrient.Kcal * Quantity;
+                    Rec.Protein := MNutrient.Protein * Quantity;
+                    Rec.Fat := MNutrient.Fat * Quantity;
+                    Rec.Carbohydrate := MNutrient.Carbohydrate * Quantity;
+                    Rec.KJ := MNutrient.KJ * Quantity;
+                    Rec.Kcal := MNutrient.Kcal * Quantity;
                     end
                 else
                     begin
