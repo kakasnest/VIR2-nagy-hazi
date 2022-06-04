@@ -2,6 +2,8 @@ table 50102 "Nutrition Line"
 {
     Caption = 'Nutrition Line';
     DataClassification = CustomerContent;
+    LookupPageId = "Nutrition Order Subform";
+    DrillDownPageId = "Nutrition Order Subform";
     
     fields
     {   
@@ -47,6 +49,7 @@ table 50102 "Nutrition Line"
             trigger OnValidate()
             var
                 MNutrient: Record Macronutrients;
+                
             begin
                 if MNutrient.Get(Rec."Nutrition Code") then
                     begin

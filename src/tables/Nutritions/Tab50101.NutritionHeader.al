@@ -37,8 +37,9 @@ table 50101 "Nutrition Header"
         {
             Caption = 'Dátum';
             DataClassification = CustomerContent;
+            Editable = false;
         }
-        field(5; Status; Enum NutritionDocumentStatus)
+        field(5; Status; Enum "Nutrition Document Status")
         {
             Caption = 'Státusz';
             ValuesAllowed = 0, 1;
@@ -87,5 +88,6 @@ table 50101 "Nutrition Header"
             Setup.Get();
             Rec."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutrient", WorkDate(), true);
         end;
+        Rec.Date := System.Today();
     end;
 }

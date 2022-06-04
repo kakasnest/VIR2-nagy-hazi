@@ -30,87 +30,36 @@ page 50108 "Nutrition Order"
                 field("Total Protein"; Rec."Total Protein")
                 {
                     ApplicationArea = All;
-                    DrillDown = true;
                     Editable = false;
-
-                    trigger OnDrillDown()
-                    var
-                        LinesR: Record "Nutrition Line";
-                        LinesP: Page "Nutrition Order Lines";
-
-                    begin
-                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
-                        LinesP.SetRecord(LinesR);
-                        LinesP.Run()
-                    end;
                 }
                 field("Total Fat"; Rec."Total Fat")
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    DrillDown = true;
 
-                    trigger OnDrillDown()
-                    var
-                        LinesR: Record "Nutrition Line";
-                        LinesP: Page "Nutrition Order Lines";
-
-                    begin
-                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
-                        LinesP.SetRecord(LinesR);
-                        LinesP.Run()
-                    end;
                 }
                 field("Total Carbohydrate"; Rec."Total Carbohydrate")
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    DrillDown = true;
 
-                    trigger OnDrillDown()
-                    var
-                        LinesR: Record "Nutrition Line";
-                        LinesP: Page "Nutrition Order Lines";
-
-                    begin
-                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
-                        LinesP.SetRecord(LinesR);
-                        LinesP.Run()
-                    end;
                 }
                 field("Total KJ"; Rec."Total KJ")
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    DrillDown = true;
 
-                    trigger OnDrillDown()
-                    var
-                        LinesR: Record "Nutrition Line";
-                        LinesP: Page "Nutrition Order Lines";
-
-                    begin
-                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
-                        LinesP.SetRecord(LinesR);
-                        LinesP.Run()
-                    end;
                 }
                 field("Total Kcal"; Rec."Total Kcal")
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    DrillDown = true;
 
-                    trigger OnDrillDown()
-                    var
-                        LinesR: Record "Nutrition Line";
-                        LinesP: Page "Nutrition Order Lines";
-
-                    begin
-                        LinesR.SetRange("Nutritional No.", Rec."Nutritional No.");
-                        LinesP.SetRecord(LinesR);
-                        LinesP.Run()
-                    end;
+                }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
                 }
             }
             part(Lines; "Nutrition Order Subform"){
@@ -119,4 +68,55 @@ page 50108 "Nutrition Order"
             }
         }
     }
+    actions{
+         area(Processing){
+            action(Release){
+                Caption = 'Lezár';
+                Image = Stages;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedIsBig = true;
+                trigger OnAction()
+                begin
+                    NM.ChangeStatus(Rec, Rec.Status::Released);
+                end;
+            }
+            action(Reopen){
+                Caption = 'Újranyit';
+                Image = Stages;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedIsBig = true;
+                trigger OnAction()
+                begin
+                    NM.ChangeStatus(Rec, Rec.Status::Open);
+                end;
+            }
+            action("Export to XML"){
+                Caption = 'Exportálás XML formátumban';
+                Image = Export;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedIsBig = true;
+                PromotedCategory = Report;
+
+                trigger OnAction()
+                begin
+                    CurrPage.SetSelectionFilter(Rec);
+                    Xmlport.Run(50100, false, false, Rec);
+                end;
+            }
+        }
+    }
+    trigger OnOpenPage()
+    begin
+        PageEditable := Rec.Status = Rec.Status::Open;
+        CurrPage.Editable(PageEditable)
+    end;
+    var
+    PageEditable: Boolean;
+    NM : Codeunit "Nutrition Management";
 }
