@@ -10,9 +10,10 @@ codeunit 50102 "Nutrition Management"
     internal procedure ConfirmStatusChange(var Rec: Record "Nutrition Header")
     var 
         ConfirmMessage : label 'Biztosan szeretné megváltoztatni a státuszt?';
+        DeclineMessage: label 'Státuszváltoztatás megszakítva';
     begin
         if not Confirm(ConfirmMessage) then
-        exit
+        Error(DeclineMessage)
     end;
 
 
