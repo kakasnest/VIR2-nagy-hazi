@@ -1,9 +1,9 @@
 /// <summary>
-/// XmlPort Nutrition Order XML (ID 50100).
+/// XmlPort Nutrition Order (ID 50100).
 /// </summary>
-xmlport 50100 "Nutrition Order XML"
+xmlport 50100 "Nutrition Order"
 {
-    Caption = 'Nutrition Order XML';
+    Caption = 'Nutrition Order';
     schema
     {
         textelement(RootNodeName)
