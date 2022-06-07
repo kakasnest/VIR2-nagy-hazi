@@ -95,7 +95,7 @@ page 50108 "Nutrition Order"
                 end;
             }
             action("Export to XML"){
-                Caption = 'Exportálás XML formátumban';
+                Caption = 'Exportálás XML-ként';
                 Image = Export;
                 ApplicationArea = All;
                 Promoted = true;

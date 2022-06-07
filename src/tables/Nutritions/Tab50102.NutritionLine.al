@@ -102,7 +102,7 @@ table 50102 "Nutrition Line"
     }
     keys
     {
-        key(PK; "Serial No.")
+        key(PK; "Nutritional No.","Serial No.")
         {
             Clustered = true;
         }
