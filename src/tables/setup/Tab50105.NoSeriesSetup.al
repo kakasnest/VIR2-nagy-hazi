@@ -1,6 +1,6 @@
-table 50106 "Nutrition Setup"
+table 50105 "No. Series Setup"
 {
-    Caption = 'Nutrition Setup';
+    Caption = 'No. Series Setup';
     DataClassification = CustomerContent;
     
     fields
@@ -10,7 +10,14 @@ table 50106 "Nutrition Setup"
             Caption = 'Code';
             DataClassification = CustomerContent;
         }
-        field(2; "No. Series for Nutrient"; Code[20])
+        field(2; "No. Series for Macronutrient"; Code[20])
+        {
+            Caption = 'No. Series for Macronutrient';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series".Code;
+            ValidateTableRelation = true;
+        }
+        field(3; "No. Series for Nutrient"; Code[20])
         {
             Caption = 'No. Series for Nutrient';
             DataClassification = CustomerContent;

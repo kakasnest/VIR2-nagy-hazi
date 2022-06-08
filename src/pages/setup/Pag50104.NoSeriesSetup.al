@@ -1,8 +1,8 @@
-page 50104 "Nutrition Setup"
+page 50104 "No. Series Setup"
 {
-    Caption = 'Nutrition Setup';
+    Caption = 'Számozási körök kezelése (nagy házi)';
     PageType = Card;
-    SourceTable = "Nutrition Setup";
+    SourceTable = "No. Series Setup";
     UsageCategory = Administration;
     ApplicationArea = All;
     
@@ -13,6 +13,10 @@ page 50104 "Nutrition Setup"
             group(General)
             {
                 field("No. Series for Nutrient"; Rec."No. Series for Nutrient")
+                {
+                    ApplicationArea = All;
+                }
+                field("No. Series for Macronutrient"; Rec."No. Series for Macronutrient")
                 {
                     ApplicationArea = All;
                 }

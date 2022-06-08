@@ -56,7 +56,7 @@ table 50100 Macronutrients
     }
     trigger OnInsert()
     var
-        Setup: Record "Macronutrients Setup";
+        Setup: Record "No. Series Setup";
         NoMgmt: Codeunit NoSeriesManagement;
     begin
         if Rec.Code = '' then

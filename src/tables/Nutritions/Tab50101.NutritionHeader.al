@@ -80,7 +80,7 @@ table 50101 "Nutrition Header"
     }
     trigger OnInsert()
     var
-        Setup: Record "Nutrition Setup";
+        Setup: Record "No. Series Setup";
         NoMgmt: Codeunit NoSeriesManagement;
     begin
         if Rec."Nutritional No." = '' then
