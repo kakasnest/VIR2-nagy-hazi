@@ -24,12 +24,18 @@ codeunit 50102 "Nutrition Management"
         Setup: Record "No. Series Setup";
         NoSeriesManagement: Codeunit NoSeriesManagement;
         ExitMessage: Label 'Sikeresen könyvelve';
+        ShouldBeDeleted: Boolean;
 
     begin
         NutritionHeader.TestField(Status, NutritionHeader.Status::Released);
 
         if not Confirm('Szeretné könyvelni a dokumentumot?') then
             exit;
+         
+        if Confirm('Kívánja törölni a rendelést a könyvelés végeztével?') then
+            ShouldBeDeleted := true
+        else
+            ShouldBeDeleted := false;
 
         PostedNutritionHeader.Init();
         PostedNutritionHeader.TransferFields(NutritionHeader);
@@ -39,13 +45,19 @@ codeunit 50102 "Nutrition Management"
 
         NutritionLine.Reset();
         NutritionLine.SetRange("Nutritional No.", NutritionHeader."Nutritional No.");
-        if NutritionHeader.findSet() then
+        if NutritionLine.findSet() then
             repeat
                 PostedNutritionLine.Init();
                 PostedNutritionLine.TransferFields(NutritionLine);
                 PostedNutritionLine."Nutritional No." := PostedNutritionHeader."Nutritional No.";
                 PostedNutritionLine.Insert(true);
-            until NutritionHeader.Next() = 0;
+            
+            if ShouldBeDeleted then
+                NutritionLine.Delete();
+            until NutritionLine.Next() = 0;
+
+        if ShouldBeDeleted then
+            NutritionHeader.Delete();
         
         Message(ExitMessage)     
     end;
