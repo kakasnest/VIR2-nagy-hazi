@@ -16,19 +16,37 @@ codeunit 50102 "Nutrition Management"
         Error(DeclineMessage)
     end;
 
-    procedure PostTestOrder(var NutritionHeader: Record "Nutrition Header")
-    var
+    procedure PostOrder(var NutritionHeader: Record "Nutrition Header")
+    var 
+        NutritionLine: Record "Nutrition Line";
         PostedNutritionHeader: Record "Posted Nutrition Header";
         PostedNutritionLine: Record "Posted Nutrition Line";
         Setup: Record "No. Series Setup";
         NoSeriesManagement: Codeunit NoSeriesManagement;
+        ExitMessage: Label 'Sikeresen könyvelve';
 
     begin
         NutritionHeader.TestField(Status, NutritionHeader.Status::Released);
+
+        if not Confirm('Szeretné könyvelni a dokumentumot?') then
+            exit;
+
         PostedNutritionHeader.Init();
         PostedNutritionHeader.TransferFields(NutritionHeader);
         PostedNutritionHeader."Nutritional No." := NoSeriesManagement.GetNextNo(Setup."No. Series for P-Nutr Orders", WorkDate(), true);
-        PostedNutritionHeader.Insert(true)
+        PostedNutritionHeader.Insert(true);
+
+        NutritionLine.Reset();
+        NutritionLine.SetRange("Nutritional No.", NutritionHeader."Nutritional No.");
+        if NutritionHeader.findSet() then
+            repeat
+                PostedNutritionLine.Init();
+                PostedNutritionLine.TransferFields(NutritionLine);
+                PostedNutritionLine."Nutritional No." := PostedNutritionHeader."Nutritional No.";
+                PostedNutritionLine.Insert(true);
+            until NutritionHeader.Next() = 0;
+        
+        Message(ExitMessage)     
     end;
 
     procedure GetNewSeriesNumber(var NutritionHeader: Record "Nutrition Header")

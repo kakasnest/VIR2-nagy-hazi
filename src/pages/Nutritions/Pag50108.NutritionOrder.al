@@ -113,6 +113,20 @@ page 50108 "Nutrition Order"
                     Xmlport.Run(50100, false, false, Rec);
                 end;
             }
+            action("Post Document"){
+                Caption = 'Rendelés könyvelése';
+                Image = Post;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    NM.PostOrder(Rec);
+                end;
+            }
         }
     }
     trigger OnOpenPage()
