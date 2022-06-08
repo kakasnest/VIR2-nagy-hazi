@@ -17,9 +17,9 @@ table 50105 "No. Series Setup"
             TableRelation = "No. Series".Code;
             ValidateTableRelation = true;
         }
-        field(3; "No. Series for Nutrient"; Code[20])
+        field(3; "No. Series for Nutr Orders"; Code[20])
         {
-            Caption = 'Tápanyagok számozási köre';
+            Caption = 'Tápanyag rendelések számozási köre';
             DataClassification = CustomerContent;
             TableRelation = "No. Series".Code;
             ValidateTableRelation = true;

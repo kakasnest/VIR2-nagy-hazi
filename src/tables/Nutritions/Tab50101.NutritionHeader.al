@@ -86,7 +86,7 @@ table 50101 "Nutrition Header"
         if Rec."Nutritional No." = '' then
         begin
             Setup.Get();
-            Rec."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutrient", WorkDate(), true);
+            Rec."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutr Orders", WorkDate(), true);
         end;
         Rec.Date := System.Today();
     end;

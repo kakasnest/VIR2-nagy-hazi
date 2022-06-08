@@ -12,7 +12,7 @@ page 50104 "No. Series Setup"
         {
             group(General)
             {
-                field("No. Series for Nutrient"; Rec."No. Series for Nutrient")
+                field("No. Series for Nutrient"; Rec."No. Series for Nutr Orders")
                 {
                     ApplicationArea = All;
                 }
