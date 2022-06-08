@@ -127,20 +127,6 @@ page 50108 "Nutrition Order"
                     NM.PostOrder(Rec);
                 end;
             }
-            action("Create report"){
-                Caption = 'Report készítése';
-                Image = Report;
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    CurrPage.SetSelectionFilter(Rec);
-                end;
-            }
         }
     }
     trigger OnOpenPage()

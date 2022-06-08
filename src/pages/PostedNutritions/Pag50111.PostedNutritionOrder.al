@@ -58,4 +58,23 @@ page 50111 "Posted Nutrition Order"
             }
         }
     }
+    actions{
+        area(Processing){
+            action("Create report"){
+    
+                Caption = 'Report készítése';
+                Image = Report;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    CurrPage.SetSelectionFilter(Rec);
+                end;
+            }
+        }
+    }    
 }
