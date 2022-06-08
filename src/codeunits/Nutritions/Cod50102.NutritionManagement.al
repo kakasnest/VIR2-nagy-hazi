@@ -16,5 +16,15 @@ codeunit 50102 "Nutrition Management"
         Error(DeclineMessage)
     end;
 
+    procedure PostTestOrder(var NutritionHeader: Record "Nutrition Header")
+    var
+        PostedNutritionHeader: Record "Posted Nutrition Header";
+        PostedNutritionLine: Record "Posted Nutrition Line";
 
+    begin
+        NutritionHeader.TestField(Status, NutritionHeader.Status::Released);
+        PostedNutritionHeader.Init();
+        PostedNutritionHeader.TransferFields(NutritionHeader);
+        PostedNutritionHeader.Insert(true)
+    end;
 }

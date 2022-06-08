@@ -24,6 +24,13 @@ table 50105 "No. Series Setup"
             TableRelation = "No. Series".Code;
             ValidateTableRelation = true;
         }
+        field(4; "No. Series for P-Nutr Orders"; Code[20])
+        {
+            Caption = 'Könyvelt tápanyag rendelések számozási köre';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series".Code;
+            ValidateTableRelation = true;
+        }
     }
     keys
     {
