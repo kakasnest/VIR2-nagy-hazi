@@ -24,15 +24,17 @@ codeunit 50102 "Nutrition Management"
         Setup: Record "No. Series Setup";
         NoSeriesManagement: Codeunit NoSeriesManagement;
         ExitMessage: Label 'Sikeresen könyvelve';
+        PostQuestion: Label 'Szeretné könyvelni a dokumentumot?';
+        DeleteQuestion: Label 'Kívánja törölni a rendelést a könyvelés végeztével?';
         ShouldBeDeleted: Boolean;
 
     begin
         NutritionHeader.TestField(Status, NutritionHeader.Status::Released);
 
-        if not Confirm('Szeretné könyvelni a dokumentumot?') then
+        if not Confirm(PostQuestion) then
             exit;
          
-        if Confirm('Kívánja törölni a rendelést a könyvelés végeztével?') then
+        if Confirm(DeleteQuestion) then
             ShouldBeDeleted := true
         else
             ShouldBeDeleted := false;
