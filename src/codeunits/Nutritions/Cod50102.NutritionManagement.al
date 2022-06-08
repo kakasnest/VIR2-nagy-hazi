@@ -20,11 +20,14 @@ codeunit 50102 "Nutrition Management"
     var
         PostedNutritionHeader: Record "Posted Nutrition Header";
         PostedNutritionLine: Record "Posted Nutrition Line";
+        Setup: Record "No. Series Setup";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
 
     begin
         NutritionHeader.TestField(Status, NutritionHeader.Status::Released);
         PostedNutritionHeader.Init();
         PostedNutritionHeader.TransferFields(NutritionHeader);
+        PostedNutritionHeader."Nutritional No." := NoSeriesManagement.GetNextNo(Setup."No. Series for P-Nutr Orders", WorkDate(), true);
         PostedNutritionHeader.Insert(true)
     end;
 }

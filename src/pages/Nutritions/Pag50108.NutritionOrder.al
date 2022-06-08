@@ -22,10 +22,12 @@ page 50108 "Nutrition Order"
                 field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Date"; Rec."Date")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Total Protein"; Rec."Total Protein")
                 {

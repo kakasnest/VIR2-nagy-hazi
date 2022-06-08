@@ -31,13 +31,11 @@ table 50101 "Nutrition Header"
         {
             Caption = 'Vevő neve';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(4; "Date"; Date)
         {
             Caption = 'Dátum';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(5; Status; Enum "Nutrition Document Status")
         {

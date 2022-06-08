@@ -14,30 +14,16 @@ table 50106 "Posted Nutrition Header"
         {
             Caption = 'Vevőkód';
             DataClassification = CustomerContent;
-            TableRelation = Customer."No.";
-            ValidateTableRelation = true;
-
-            trigger OnValidate()
-            var
-                Customer: Record Customer;
-            begin
-                if Customer.Get("Customer No.") then
-                    Rec."Customer Name" := Customer.Name
-                else
-                    Rec."Customer Name" := '';
-            end;
         }
         field(3; "Customer Name"; Text[100])
         {
             Caption = 'Vevő neve';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(4; "Date"; Date)
         {
             Caption = 'Dátum';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(5; Status; Enum "Nutrition Document Status")
         {
@@ -78,16 +64,4 @@ table 50106 "Posted Nutrition Header"
             Clustered = true;
         }
     }
-    trigger OnInsert()
-    var
-        Setup: Record "No. Series Setup";
-        NoMgmt: Codeunit NoSeriesManagement;
-    begin
-        if Rec."Nutritional No." = '' then
-        begin
-            Setup.Get();
-            Rec."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutr Orders", WorkDate(), true);
-        end;
-        Rec.Date := System.Today();
-    end;
 }

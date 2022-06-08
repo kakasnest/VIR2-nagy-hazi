@@ -39,7 +39,6 @@ table 50102 "Nutrition Line"
         {
             Caption = 'Megnevezés';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(5; Quantity; Integer)
         {
@@ -73,31 +72,26 @@ table 50102 "Nutrition Line"
         {
             Caption = 'Fehérje';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(7; Fat; Decimal)
         {
             Caption = 'Zsír';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(8; Carbohydrate; Decimal)
         {
             Caption = 'Szénhidrát';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(9; KJ; Decimal)
         {
             Caption = 'KJ';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(10; Kcal; Decimal)
         {
             Caption = 'Kcal';
             DataClassification = CustomerContent;
-            Editable = false;
         }
     }
     keys
