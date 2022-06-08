@@ -59,7 +59,9 @@ codeunit 50102 "Nutrition Management"
         if ShouldBeDeleted then
             NutritionHeader.Delete();
         
-        Message(ExitMessage)     
+        Commit();
+        Message(ExitMessage);
+        Page.RunModal(Page::"Posted Nutrition Order", PostedNutritionHeader);
     end;
 
     procedure GetNewSeriesNumber(var NutritionHeader: Record "Nutrition Header")
