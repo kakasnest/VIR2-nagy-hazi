@@ -33,6 +33,7 @@ codeunit 50102 "Nutrition Management"
 
         PostedNutritionHeader.Init();
         PostedNutritionHeader.TransferFields(NutritionHeader);
+        Setup.Get();
         PostedNutritionHeader."Nutritional No." := NoSeriesManagement.GetNextNo(Setup."No. Series for P-Nutr Orders", WorkDate(), true);
         PostedNutritionHeader.Insert(true);
 
