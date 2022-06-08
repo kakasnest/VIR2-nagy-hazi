@@ -1,6 +1,6 @@
 page 50104 "No. Series Setup"
 {
-    Caption = 'Számozási körök kezelése (nagy házi)';
+    Caption = 'No. Series Setup (nagy házi)';
     PageType = Card;
     SourceTable = "No. Series Setup";
     UsageCategory = Administration;
