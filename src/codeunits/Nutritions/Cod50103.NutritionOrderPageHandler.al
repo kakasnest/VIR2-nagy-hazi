@@ -1,4 +1,4 @@
-codeunit 50103 NutritionOrderPageHandler
+codeunit 50103 "Nutrition Order Page Handler"
 {
     [EventSubscriber(ObjectType::Page, Page::"Nutrition Order", 'OnBeforeActionEvent', 'Release', false, false)]
     local procedure OnBeforeActionEvent_ConfirmRelease(var Rec: Record "Nutrition Header")

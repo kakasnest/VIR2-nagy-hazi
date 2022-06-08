@@ -77,6 +77,7 @@ page 50108 "Nutrition Order"
                 Promoted = true;
                 PromotedOnly = true;
                 PromotedIsBig = true;
+                PromotedCategory = Process;
                 trigger OnAction()
                 begin
                     NM.ChangeStatus(Rec, Rec.Status::Released);
@@ -89,6 +90,7 @@ page 50108 "Nutrition Order"
                 Promoted = true;
                 PromotedOnly = true;
                 PromotedIsBig = true;
+                PromotedCategory = Process;
                 trigger OnAction()
                 begin
                     NM.ChangeStatus(Rec, Rec.Status::Open);
@@ -101,7 +103,7 @@ page 50108 "Nutrition Order"
                 Promoted = true;
                 PromotedOnly = true;
                 PromotedIsBig = true;
-                PromotedCategory = Report;
+                PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
