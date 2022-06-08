@@ -30,4 +30,17 @@ codeunit 50102 "Nutrition Management"
         PostedNutritionHeader."Nutritional No." := NoSeriesManagement.GetNextNo(Setup."No. Series for P-Nutr Orders", WorkDate(), true);
         PostedNutritionHeader.Insert(true)
     end;
+
+    procedure GetNewSeriesNumber(var NutritionHeader: Record "Nutrition Header")
+    var
+        Setup: Record "No. Series Setup";
+        NoMgmt: Codeunit NoSeriesManagement;
+    begin
+        if NutritionHeader."Nutritional No." = '' then
+        begin
+            Setup.Get();
+            NutritionHeader."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutr Orders", WorkDate(), true);
+        end;
+        
+    end;
 }

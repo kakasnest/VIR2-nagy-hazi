@@ -78,14 +78,9 @@ table 50101 "Nutrition Header"
     }
     trigger OnInsert()
     var
-        Setup: Record "No. Series Setup";
-        NoMgmt: Codeunit NoSeriesManagement;
+        NutritionManagement: Codeunit "Nutrition Management";
     begin
-        if Rec."Nutritional No." = '' then
-        begin
-            Setup.Get();
-            Rec."Nutritional No." := NoMgmt.GetNextNo(Setup."No. Series for Nutr Orders", WorkDate(), true);
-        end;
+        NutritionManagement.GetNewSeriesNumber(Rec);
         Rec.Date := System.Today();
     end;
 }

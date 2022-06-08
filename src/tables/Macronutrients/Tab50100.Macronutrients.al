@@ -56,13 +56,8 @@ table 50100 Macronutrients
     }
     trigger OnInsert()
     var
-        Setup: Record "No. Series Setup";
-        NoMgmt: Codeunit NoSeriesManagement;
+        MacronutrientManagement: Codeunit "Macronutrient Management";
     begin
-        if Rec.Code = '' then
-        begin
-            Setup.Get();
-            Rec.Code := NoMgmt.GetNextNo(Setup."No. Series for Macronutrient", WorkDate(), true);
-        end;
+        MacronutrientManagement.GetNewSeriesNumber(Rec);
     end;
 }
