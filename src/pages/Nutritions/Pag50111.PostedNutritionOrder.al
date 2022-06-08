@@ -3,6 +3,7 @@ page 50111 "Posted Nutrition Order"
     Caption = 'Posted Nutrition Order';
     PageType = Document;
     SourceTable = "Posted Nutrition Header";
+    Editable = false;
     
     layout
     {
